@@ -1,25 +1,21 @@
 import { useState } from 'react'
-import  Button  from 'react-bootstrap/Button'
-import Stack from 'react-bootstrap/Stack'
-import './App.css'
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import { Button } from 'primereact/button';
 
 const App = () => {
   const [ counter, setCounter ] = useState(0)
 
-  const handleClick = () => {
-    console.log('clicked');
-  }
-
   return (
-    <Stack direction="horizontal" gap={2}>
-      <div>{counter}</div>
-      <Button as="a" variant="primary" onClick={() => setCounter(counter + 1)}>
-        Add
-      </Button>
-      <Button as="a" variant="success" onClick={() => setCounter(0)}>
-        Reset
-      </Button>
-    </Stack>
+    <PrimeReactProvider  value={{
+        ripple: true,
+        inputStyle: 'outlined',
+        locale: 'pt-BR'
+    }}>
+      <div>
+        <div>{counter}</div>
+        <Button label="Check" icon="pi pi-check" severity="success" onClick={() => setCounter(counter + 1)}/>
+      </div>
+    </PrimeReactProvider>
   )
 }
 
