@@ -4,14 +4,20 @@ import './App.css'
 const App = () => {
   const [ counter, setCounter ] = useState(0)
 
-  setTimeout(
-    () => setCounter(counter + 1)
-  , 1000)
+  const handleClick = () => {
+    console.log('clicked');
+  }
 
-  console.log('rendereing...', counter);
-  
   return (
-    <div>{counter}</div>
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+        plus
+      </button>
+      <button onClick={() => setCounter(counter - 1)}>
+        zero
+      </button>
+    </div>
   )
 }
 
