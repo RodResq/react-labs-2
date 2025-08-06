@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import  Button  from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
 import './App.css'
 
 const App = () => {
@@ -9,15 +11,15 @@ const App = () => {
   }
 
   return (
-    <div>
+    <Stack direction="horizontal" gap={2}>
       <div>{counter}</div>
-      <button onClick={() => setCounter(counter + 1)}>
-        plus
-      </button>
-      <button onClick={() => setCounter(counter - 1)}>
-        zero
-      </button>
-    </div>
+      <Button as="a" variant="primary" onClick={() => setCounter(counter + 1)}>
+        Add
+      </Button>
+      <Button as="a" variant="success" onClick={() => setCounter(0)}>
+        Reset
+      </Button>
+    </Stack>
   )
 }
 
