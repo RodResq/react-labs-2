@@ -3,17 +3,9 @@ import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import { Button } from 'primereact/button';
 
 
-const Display = (props) => {
-  return (
-    <div>{props.counter}</div>
-  )
-}
+const Display = ({ counter }) => <div>{counter}</div>
 
-const ButtonExample = (props) => {
-  return (
-    <Button label={props.text} icon="pi pi-check" severity={props.type} onClick={props.onClick}/>
-  )
-}
+const ButtonExample = ({text, type, onClick }) => <Button label={text} icon="pi pi-check" severity={type} onClick={onClick}/>
 
 
 const App = () => {
