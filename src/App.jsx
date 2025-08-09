@@ -9,21 +9,16 @@ const ButtonExample = ({text, type, onClick }) => <Button label={text} icon="pi 
 
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
-  console.log('rendereing with counter value', counter)
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  })
 
-  const increaseByOne = () => {
-    console.log('increasing, value before', counter);
-    setCounter(counter + 1)
-  }
-  const decreaseByOne = () => {
-    console.log('decreasing, value before', counter)
-    setCounter(counter - 1)
-  }
-  const setToZero = () => {
-    console.log('resetting to zero, value before', counter);
-    setCounter(0)
-  }
+  const handleLefClick = () => setClicks({ ...clicks, left: clicks.left + 1 })
+  
+
+  const handleRightClick = () => setClicks({ ...clicks, right: clicks.right + 1})
+  
+
 
   return (
     <PrimeReactProvider  value={{
@@ -32,11 +27,11 @@ const App = () => {
         locale: 'pt-BR'
     }}>
       <div>
-        <Display  counter={counter} />
-        <ButtonExample text="plus" type="success" onClick={increaseByOne} />
-        <ButtonExample text="zero" type="warning" onClick={setToZero} />
-        <ButtonExample text="minus" type="danger" onClick={decreaseByOne} />
+        { clicks.left }
+        <ButtonExample text="left" type="success" onClick={handleLefClick} />
+        <ButtonExample text="right" type="danger" onClick={handleRightClick} />
       </div>
+        { clicks.right }
     </PrimeReactProvider>
   )
 }
