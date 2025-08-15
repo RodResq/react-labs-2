@@ -1,12 +1,31 @@
 import { useState } from 'react'
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import { Button } from 'primereact/button';
 
 
-const Display = ({ counter }) => <div>{counter}</div>
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
 
-const ButtonExample = ({text, type, onClick }) => <Button label={text} icon="pi pi-check" severity={type} onClick={onClick}/>
+  return (
+    <div>
+      button press history: {props.allClicks.join(' ')}
+    </div>
+  )
+}
 
+const Button = (props) => {
+  console.log('props value is', props);
+  const { onClick, text } = props
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>
+  )
+}
 
 const App = () => {
   const [left, setLeft] = useState(0)
@@ -24,19 +43,13 @@ const App = () => {
   }
     
   return (
-    <PrimeReactProvider  value={{
-        ripple: true,
-        inputStyle: 'outlined',
-        locale: 'pt-BR'
-    }}>
-      <div>
-        { left }
-        <ButtonExample text="left" type="success" onClick={handleLefClick} />
-        <ButtonExample text="right" type="danger" onClick={handleRightClick} />
-        { right }
-      </div>
-      <p>{allClicks.join(' ')}</p>
-    </PrimeReactProvider>
+    <div>
+      {left}
+      <Button onClick={handleLefClick} text='left' />
+      <Button onClick={handleRightClick} text='right' />
+      {right}
+      <History allClicks={allClicks} />
+    </div>
   )
 }
 
