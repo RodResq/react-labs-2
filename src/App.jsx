@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import { Button } from 'primereact/button';
 
 const App = () => {
   const [value, setValue] = useState(10)
