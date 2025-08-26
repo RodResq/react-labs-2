@@ -1,21 +1,27 @@
 import { useState } from 'react'
 
+
+const Button = (props) => (
+  <button onClick={props.onClick}>
+    {props.text}
+  </button>
+)
+
+
 const App = () => {
   const [value, setValue] = useState(10)
 
-  const setValue = (newValue) => () => {
-    
+  const setToValue = (newValue) => {
+    console.log('value now', newValue)
+    setValue(newValue)
   }
-
-  const hello = (who) => () => console.log('hello', who);
-  
-    
+      
   return (
     <div>
       {value}
-      <button onClick={hello('world')}>Button</button>
-      <button onClick={hello('react')}>Button</button>
-      <button onClick={hello('function')}>Button</button>
+      <Button onClick={() => setToValue(1000)} text="thousend" />
+      <Button onClick={() => setToValue(0)} text="rest" />
+      <Button onClick={() => setToValue(value + 1)} text="increment" />
     </div>
   )
 }
