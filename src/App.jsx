@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
 
+
+const Display = () => <div>{props.value}</div>
+
 const Button = (props) => (
   <button onClick={props.onClick}>
     {props.text}
   </button>
 )
-
 
 const App = () => {
   const [value, setValue] = useState(10)
@@ -18,7 +20,7 @@ const App = () => {
       
   return (
     <div>
-      {value}
+      <Display value={value} />
       <Button onClick={() => setToValue(1000)} text="thousend" />
       <Button onClick={() => setToValue(0)} text="rest" />
       <Button onClick={() => setToValue(value + 1)} text="increment" />
