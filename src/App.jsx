@@ -1,21 +1,16 @@
 import { useState } from 'react'
 
-const App = () => {
-  const [value, setValue] = useState(10)
 
-  const setValue = (newValue) => () => {
-    
-  }
 
-  const hello = (who) => () => console.log('hello', who);
-  
-    
+const App = (props) => {
+  const { notes } = props
+
   return (
     <div>
-      {value}
-      <button onClick={hello('world')}>Button</button>
-      <button onClick={hello('react')}>Button</button>
-      <button onClick={hello('function')}>Button</button>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => <li>{note.content}</li>)}
+      </ul>
     </div>
   )
 }
